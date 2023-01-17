@@ -1,0 +1,9 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer mode="side" position="end">Start</mat-sidenav>
+    <mat-sidenav-content class="main">
+        <button class="button" raise color="primary" mat-raised-button (click)="drawer.open()">Open sidenav</button>
+        <button raise color="accent" mat-raised-button (click)="drawer.close()">Close sidenav</button>
+        <div></div>
+        <button mat-raised-button (click)="drawer.toggle()">Toggle sidenav</button>
+    </mat-sidenav-content>
+</mat-sidenav-container>

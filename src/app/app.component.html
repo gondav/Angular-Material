@@ -1,0 +1,537 @@
+<mat-form-field>
+  <input matInput placeholder="Enter something..." #inp>
+</mat-form-field>
+<button mat-raised-button color="accent" (click)="onSubmit()">Submit</button>
+
+<mat-drawer-container class="main-container">
+  <mat-drawer-content class="content">
+
+ 
+
+  <!-- ----------------------------------------TOOLBAR------------------------------------------------ -->
+    <mat-toolbar class="header">
+      <div class="nav-flex-left">
+        <mat-icon style="color: white; cursor: pointer; margin-right: 10px">menu</mat-icon>
+        <strong>GrainPlus Kft.&nbsp;</strong>
+        <span>Nyilvántartó rendszer</span>
+      </div>
+      <div class="nav-flex-right">
+        <mat-icon>person</mat-icon>
+        <span>admin</span>
+      </div>
+    </mat-toolbar>
+
+  <!-- ----------------------------------------TABS------------------------------------------------ -->
+
+    <mat-tab-group animationDuration="4000">
+      <mat-tab matBadge="1">
+        <ng-template mat-tab-label="Folyamatban">
+          <span class="tab-header" matBadge="2" matBadgeColor="accent" matBadgeOverlap="false">Folyamatban</span>
+        </ng-template>
+        <span>Content 1</span>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label="Lejárati idő közeledik">
+          <span matBadge="0" matBadgeColor="warn" matBadgeOverlap="false">Lejárati idő közeledik</span>
+        </ng-template>
+        <span>Content 2</span>
+      </mat-tab>
+      <mat-tab >
+        <ng-template mat-tab-label="Készre jelentésre vár">
+          <span matBadge="2" matBadgeColor="accent" matBadgeOverlap="false">Készre jelentésre vár</span>
+        </ng-template>
+        <span>Content 3</span>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label="Leszállítva">
+          <span matBadge="0" matBadgeColor="accent" matBadgeOverlap="false">Leszállítva</span>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+    <br><br>
+
+    <!-- ----------------------------------------STEPPER------------------------------------------------ -->
+
+    <h1>Stepper</h1>
+    <app-stepper></app-stepper>
+
+    <br>
+    <!-- ----------------------------------------TABLE------------------------------------------------ -->
+    <h1>Table</h1>
+    <app-table></app-table>
+
+  <!-- ----------------------------------------SNACKBAR------------------------------------------------ -->
+
+  <button mat-raised-button
+        matTooltip="Info about the action"
+        matTooltipClass="example-tooltip-uppercase"
+        aria-label="Button that shows a red tooltip"
+        class="example-button">
+  Uppercase-tooltip Action
+</button>  
+  
+  <button
+      mat-raised-button
+      (click)="openSnackBar()"
+      matTooltip="Show snack bar"
+      matTooltipPosition="above"
+      matTooltipShowDelay="200"
+      matTooltipHideDelay="200"
+      matTooltipClass="uppercase">
+      Show snack-bar
+    </button>
+    <div></div>
+    <br><br>
+
+  <!-- ----------------------------------------FORM------------------------------------------------ -->
+
+  <app-form></app-form>
+
+<br><br>
+    <div class="autocomplete">
+      <h2>Autocomplete</h2>
+      <mat-form-field>
+        <mat-label>Number</mat-label>
+        <input matInput [matAutocomplete]="auto" type="text" placeholder="Pick one">
+        <mat-autocomplete  #auto="matAutocomplete" autoActiveFirstOption>
+          <mat-option *ngFor="let option of numOptions" [value]="option" > {{ option }} </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+  
+      <h4>Filter autocomplete</h4>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput [matAutocomplete]="autoFilter" [formControl]="myControl" type="text">
+        <mat-autocomplete #autoFilter="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option" > {{option}} </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  
+    <div class="badge">
+      <h1>Badges</h1>
+      <span matBadge="4" matBadgePosition="after" matBadgeColor="accent" matBadgeOverlap="false">Text with a badge</span>
+  
+      <div matBadge="1" matBadgeSize="large" matBadgePosition="after" matBadgeColor="warn">Text with large badge</div>
+    
+    <div>
+      Button with a badge on the left
+      <button mat-raised-button color="primary"
+          matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+        Action
+      </button>
+    </div>
+    
+    <div>
+        Button toggles badge visibility
+        <button mat-raised-button matBadge="7" [matBadgeHidden]="hidden" (click)="toggleBadgeVisibility()">
+            Hide
+        </button>
+      </div>
+    
+    <div>
+      Icon with a badge
+      <mat-icon matBadge="15" matBadgeColor="warn">home</mat-icon>
+        <span class="cdk-visually-hidden">
+          Example with a home icon with overlaid badge showing the number 15
+        </span>
+    </div>
+    </div>
+    
+    <div class="buttons">
+      <h1>Buttons</h1>
+      <button mat-raised-button color="primary" disableRipple="false" >Raised button</button>
+      <button mat-flat-button color="accent">Flat button</button>
+      <button mat-stroked-button color="warn">Stroked button</button>
+      <a mat-button color="primary">Anchor button</a>
+      <button mat-icon-button color="primary">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+    </div>
+  
+    <div class="button-toggle">
+      <h1>Button toggle</h1>
+      <h4>Single selection</h4>
+      <mat-button-toggle-group class="button-toggle-group">
+        <mat-button-toggle class="button-toggle">Button one</mat-button-toggle>
+        <mat-button-toggle class="button-toggle">Button two</mat-button-toggle>
+        <mat-button-toggle class="button-toggle">Button three</mat-button-toggle>
+        <mat-button-toggle class="button-toggle">Button four</mat-button-toggle>
+      </mat-button-toggle-group>
+      <h4>Multiple selection</h4>
+      <mat-button-toggle-group multiple class="button-toggle-group">
+        <mat-button-toggle class="button-toggle">Button one</mat-button-toggle>
+        <mat-button-toggle class="button-toggle">Button two</mat-button-toggle>
+        <mat-button-toggle class="button-toggle">Button three</mat-button-toggle>
+        <mat-button-toggle class="button-toggle">Button four</mat-button-toggle>
+      </mat-button-toggle-group>
+      <h4>Select a color</h4>
+      <mat-button-toggle-group >
+        <mat-button-toggle (click)="changeColor('red')" class="button-toggle">Red</mat-button-toggle>
+        <mat-button-toggle (click)="changeColor('green')" class="button-toggle">Green</mat-button-toggle>
+        <mat-button-toggle (click)="changeColor('blue')" class="button-toggle">Blue</mat-button-toggle>
+        <mat-button-toggle (click)="changeColor('yellow')" class="button-toggle">Yellow</mat-button-toggle>
+      </mat-button-toggle-group>
+      <div [ngStyle]="{ 'background-color': color }"  class="color-box"></div>
+    </div>
+  
+      <!-- ----------------------------------------CARD------------------------------------------------ -->
+  
+    <h1>Cards</h1>
+    <mat-card class="card">
+      <mat-card-content>This is a simple card</mat-card-content>
+    </mat-card>
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>Title</mat-card-title>
+        <mat-card-subtitle>Subtitle</mat-card-subtitle>
+        <img mat-card-avatar src="https://images.unsplash.com/photo-1609151354448-c4a53450c6e9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="">
+      </mat-card-header>
+      <img mat-card-image src="https://images.unsplash.com/photo-1497752531616-c3afd9760a11?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="">
+      <mat-card-content>
+        <p>This is a racoon</p>
+      </mat-card-content>
+      <mat-card-footer>
+  
+        <mat-card-actions align="start">
+          <button mat-button >LIKE</button>
+          <button mat-button >SHARE</button>
+        </mat-card-actions>
+      </mat-card-footer>
+    </mat-card>
+  
+    <!-- ----------------------------------------CHECKBOX------------------------------------------------ -->
+  
+    <h1>Checkboxes</h1>
+    <section class="example-section">
+      <mat-checkbox checked="true" color="accent" class="checkbox">Check</mat-checkbox>
+      <mat-checkbox class="checkbox">Check me</mat-checkbox>
+    </section>
+  
+    <section class="example-section">
+      <mat-card class="card">
+        <mat-card-content>
+          <mat-checkbox 
+            [checked]="allComplete"
+            [color]="task.color"
+            (change)="setAll($event.checked)">
+            {{ task.name }}
+          </mat-checkbox>
+          <ul>
+            <li *ngFor="let subtask of task.subtasks">
+              <mat-checkbox
+              [(ngModel)]="subtask.completed"
+              [color]="subtask.color"
+              (ngModelChange)="updateAllComplete()">
+                {{ subtask.name }}
+              </mat-checkbox>
+            </li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </section>
+  
+    <!-- ----------------------------------------CHIPS------------------------------------------------ -->
+  
+    <h1>Chips</h1>
+    <mat-chip-listbox multiple>
+      <mat-chip-option>Banana</mat-chip-option>
+      <mat-chip-option>Orange</mat-chip-option>
+      <mat-chip-option>Apple</mat-chip-option>
+      <mat-chip-option>Blueberry</mat-chip-option>
+    </mat-chip-listbox>
+  
+    <!-- ----------------------------------------DATEPICKERs------------------------------------------------ -->
+  
+    <h1>Datepicker</h1>
+  
+    <mat-form-field>
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle [for]="picker" matIconSuffix ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  
+    <h3>Basic date range picker</h3>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="rangePicker">
+        <input matStartDate placeholder="Start date">
+        <input matEndDate placeholder="End date">
+      </mat-date-range-input>
+      <mat-hint>MM/DD/YYY - MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="rangePicker"></mat-datepicker-toggle>
+  
+      <mat-date-range-picker #rangePicker></mat-date-range-picker>
+    </mat-form-field>
+  
+    <!-- ----------------------------------------DIALOG------------------------------------------------ -->
+  
+    <ol>
+      <li>
+        <mat-form-field>
+          <mat-label>What is your name?</mat-label>
+          <input matInput [(ngModel)]="name">
+        </mat-form-field>
+      </li>
+      <li>
+        <button mat-raised-button >Pick one</button>
+      </li>
+    </ol>
+  
+    <!-- ----------------------------------------DIVIDER------------------------------------------------ -->
+  
+    <h1>Divider</h1>
+    <mat-divider [inset]="false"></mat-divider>
+    <ul>
+      <li>Item 1</li>
+      <mat-divider></mat-divider>
+      <li>Item 1</li>
+      <mat-divider></mat-divider>
+      <li>Item 1</li>
+      <mat-divider></mat-divider>
+    </ul>
+  
+    <mat-list>
+      <mat-list-item>Item 1</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Item 2</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Item 3</mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  
+    <div class="column">
+      <p>Item 1</p>
+      <mat-divider [vertical]="true" class="margin"></mat-divider>
+      <p>Item 2</p>
+      <mat-divider [vertical]="true" class="margin"></mat-divider>
+  
+      <p>Item 3</p>
+      <mat-divider [vertical]="true" class="margin"></mat-divider>
+  
+    </div>
+  
+    <!-- ----------------------------------------GRID LIST------------------------------------------------ -->
+  
+    <mat-grid-list cols="5" rowHeight="100px">
+      <mat-grid-tile 
+      *ngFor="let tile of tiles"
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows"
+      [style.background]="tile.color"
+      [style.color]="'white'">
+      {{ tile.text }}
+      </mat-grid-tile>
+    </mat-grid-list>
+  
+    <!-- ----------------------------------------ICONS------------------------------------------------ -->
+  
+    <ul>
+      <li>
+        <mat-icon fontIcon="home"></mat-icon>
+        
+      </li>
+      <li>
+        <mat-icon>
+          <span class="material-symbols-outlined">
+            search
+            </span>
+        </mat-icon>
+      </li>
+      <li>
+        <mat-icon>
+          <span class="material-symbols-outlined">
+            search
+            </span>
+        </mat-icon>
+      </li>
+    </ul>
+    <mat-icon>
+      <span class="material-symbols-outlined">
+        favorite
+        </span>
+    </mat-icon>
+    <mat-icon>
+      favorite
+    </mat-icon>
+    <mat-icon>
+      double_arrow
+    </mat-icon>
+    <mat-icon>
+      density_medium
+    </mat-icon>
+  
+  <!-- ----------------------------------------ICONS------------------------------------------------ -->
+  <nav>
+      
+    <mat-nav-list class="flex">
+      <mat-list-item>
+        <a>Home</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a>Home</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a>Home</a>
+      </mat-list-item>
+    </mat-nav-list>
+  </nav>
+  
+  <!-- ----------------------------------------MENU------------------------------------------------ -->
+  
+  <h1>Menu</h1>
+  <mat-card>
+    <mat-card-header>
+      <p>Simple menu</p>
+    </mat-card-header>
+    <mat-card-content>
+      <button mat-button [matMenuTriggerFor]="menu">Menu 1</button>
+      <mat-menu #menu="matMenu" yPosition="below">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+  
+      <button mat-button [matMenuTriggerFor]="appMenu">Menu 2</button>
+      <mat-menu #appMenu="matMenu" hasBackdrop="false">
+        <ng-template matMenuContent>
+          <button mat-menu-item>Settings</button>
+          <button mat-menu-item [matMenuTriggerFor]="nestedMenu">Help</button>
+          <mat-menu #nestedMenu="matMenu">
+            <button mat-menu-item>Help 1</button>
+            <button mat-menu-item>Help 2</button>
+          </mat-menu>
+        </ng-template>
+      </mat-menu>
+  
+      <button [matMenuTriggerFor]="iconMenu" mat-icon-button><mat-icon>more_vert</mat-icon></button>
+      <mat-menu #iconMenu="matMenu">
+        <button mat-menu-item><mat-icon> dialpad</mat-icon></button>
+        <button mat-menu-item><mat-icon> email</mat-icon></button>
+        <button mat-menu-item><mat-icon> phone</mat-icon></button>
+      </mat-menu>
+  
+    </mat-card-content>
+  </mat-card>
+  
+  <!-- ----------------------------------------PAGINATOR------------------------------------------------ -->
+  
+  <h1>Paginator</h1>
+  <mat-paginator [length]="32"
+    [pageSize]="10"
+    [pageSizeOptions]="[6, 10, 15]"
+    [showFirstLastButtons]="true"
+    color="accent"
+    ></mat-paginator>
+  
+  <!-- ----------------------------------------PROGRESS BAR------------------------------------------------ -->
+  
+  <h1>Progress bar</h1>
+  
+  <h3>Determinate</h3>
+  <mat-progress-bar mode="determinate" [value]="value"></mat-progress-bar>
+  
+  <h3>Indeterminate</h3>
+  <mat-progress-bar mode="indeterminate"
+    color="accent">
+  </mat-progress-bar>
+  
+  <h3>Buffer</h3>
+  <mat-progress-bar mode="buffer" color="primary"></mat-progress-bar>
+  
+  <!-- ----------------------------------------PROGRESS SPINNER------------------------------------------------ -->
+  
+  <h1>Spinner</h1>
+  <mat-spinner></mat-spinner>
+  <mat-progress-spinner mode="determinate" [value]="value"></mat-progress-spinner>
+  
+  <!-- ----------------------------------------RADIO BUTTON------------------------------------------------ -->
+  
+  <h1>Radio button</h1>
+  
+  <mat-radio-group>
+    <mat-radio-button>Option 1</mat-radio-button>
+    <mat-radio-button>Option 2</mat-radio-button>
+  </mat-radio-group>
+  
+  <mat-label class="row" >Pick your favorite food</mat-label>
+  <mat-radio-group [(ngModel)]="favFood" (change)="onRadioButtonChange()">
+    <mat-radio-button class="row" value="Pizza" labelPosition="before">Pizza</mat-radio-button>
+    <mat-radio-button class="row" value="Chicken soup">Chicken soup</mat-radio-button>
+    <mat-radio-button class="row" value="Hamburger">Hamburger</mat-radio-button>
+    <mat-radio-button class="row" value="Porridge">Porridge</mat-radio-button>
+  </mat-radio-group>
+  <p>Your favorite food is {{ favFood }}</p>
+  
+  <!-- ----------------------------------------RIPPLES------------------------------------------------ -->
+  
+  <h1>Ripples</h1>
+  <div class="ripple" matRipple matRippleColor="#A23456" [matRippleUnbounded]="false">Click me</div>
+  
+  <!-- ----------------------------------------SELECT------------------------------------------------ -->
+  
+  <h1>Select</h1>
+  <h3>Basic select</h3>
+  <mat-form-field>
+    <mat-label>Favorite season</mat-label>
+    <mat-select [(ngModel)]="selectedValue">
+      <mat-option *ngFor="let season of favSeason"  [value]="season">{{ season }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p>Your favorite season is {{ selectedValue }}.</p>
+  
+  <h3>Multiple selection</h3>
+  <mat-form-field>
+    <mat-label>Toppings</mat-label>
+    <mat-select multiple>
+      <mat-option>Extra cheese</mat-option>
+      <mat-option>Pepperoni</mat-option>
+      <mat-option>Mushroom</mat-option>
+      <mat-option>Onion</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <h3>2-way value biding</h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Select an option</mat-label>
+    <mat-select [(value)]="selected">
+      <mat-option>None</mat-option>
+      <mat-option value="option1">Option 1</mat-option>
+      <mat-option value="option2">Option 2</mat-option>
+      <mat-option value="option3">Option 3</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <p>You selected: {{selected}}</p>
+  
+  <!-- ----------------------------------------SIDENAV------------------------------------------------ -->
+  
+  <mat-divider></mat-divider>
+  <h1>Sidenav</h1>
+  <app-sidenav></app-sidenav>
+
+  <!-- ----------------------------------------SIDE TOGGLE------------------------------------------------ -->
+
+  <h1>Side toggle</h1>
+  <mat-slide-toggle class="toggle">Slide me!</mat-slide-toggle>
+
+  <mat-slide-toggle [(ngModel)]="isChecked" class="toggle">Slide toggle checked: {{ isChecked }}</mat-slide-toggle>
+
+
+  <!-- ----------------------------------------SLIDER------------------------------------------------ -->
+  
+  <h1>Slider</h1>
+  <mat-slider discrete>
+    <input matSliderThumb>
+  </mat-slider>
+
+  <mat-slider min="200" max="500" discrete>
+    <input matSliderStartThumb value="300">
+    <input matSliderEndThumb value="400">
+  </mat-slider>
+
+   <div  style="height: 400px;"></div>
+  </mat-drawer-content>
+</mat-drawer-container>
+

@@ -1,0 +1,57 @@
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input
+            matInput
+            placeholder="Enter your name..."
+            floatLabel="floating label"
+            ngModel
+            name="name">
+    </mat-form-field>
+    
+    <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Secret question</mat-label>
+        <mat-select
+            placeholder="Select an option..."
+            required
+            ngModel
+            name="secretQuestion">
+
+            <mat-option value="one">Your first pet?</mat-option>
+            <mat-option value="two">Second option</mat-option>
+            <mat-option value="three">Third option</mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Textarea</mat-label>
+        <textarea
+            #textInput
+            matInput
+            ngModel
+            name="text">
+        </textarea>
+        <mat-hint>Max 20 characters</mat-hint>
+        <mat-hint align="end"
+        [ngClass]="textInput.value.length > 20 ? 'warning' : ''">
+        
+        
+        {{textInput.value.length}}/20</mat-hint>
+    </mat-form-field>
+    <br>
+    <h3>Hide/unhide password</h3>
+
+    <mat-form-field appearance="outline" color="accent">
+        <mat-label>Enter your password</mat-label>
+        <input
+            matInput 
+            [type]="isHidden ? 'password' : 'text'"
+            >
+        <button mat-icon-button matSuffix (click)="isHidden = !isHidden">
+            <mat-icon>{{isHidden ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <br>
+
+    <button mat-raised-button color="primary">Submit</button>
+</form>
